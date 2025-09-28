@@ -40,6 +40,32 @@ public class LoginTests {
         String name = driver.findElement(By.xpath("//*[@id=\"gh\"]/nav/div[1]/span[1]/div/button/span/span")).getText();
         Assert.assertEquals(name,"Albab!");
     }
+    @Test
+    public void loginWithWrongPassword() throws InterruptedException {
+        driver.findElement(By.id("userid")).sendKeys("albabahmed21@yahoo.com");
+        Thread.sleep(1000);
+        driver.findElement(By.cssSelector("#signin-continue-btn")).click();
+        driver.findElement(By.id("pass")).sendKeys("*********");
+        Thread.sleep(1000);
+        driver.findElement(By.cssSelector("#sgnBt")).click();
+        Thread.sleep(1000);
+        String errorMsg = driver.findElement(By.id("signin-error-msg")).getText();
+        Assert.assertEquals(errorMsg,"This password is incorrect. Try again or reset password.");
+    }
+    @Test
+    public void loginWithInvalidEmail() throws InterruptedException {
+        driver.findElement(By.id("userid")).sendKeys("aaaa@qw.com");
+        Thread.sleep(1000);
+        driver.findElement(By.cssSelector("#signin-continue-btn")).click();
+        String errorMsg = driver.findElement(By.id("signin-error-msg")).getText();
+        Assert.assertEquals(errorMsg,"We couldn't find this eBay account. Try again or create an account.");
+    }
+    @Test
+    public void loginWithEmptyEmailField(){
+        driver.findElement(By.cssSelector("#signin-continue-btn")).click();
+        String errorMsg = driver.findElement(By.id("signin-error-msg")).getText();
+        Assert.assertEquals(errorMsg,"Oops, that's not a match.");
+    }
     @AfterClass
     public void afterTest(){
         driver.quit();
