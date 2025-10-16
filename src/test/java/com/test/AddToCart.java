@@ -26,7 +26,7 @@ public class AddToCart {
         driver.findElement(By.partialLinkText("Sign in")).click();
         driver.findElement(By.id("userid")).sendKeys("albabahmed21@yahoo.com");
         driver.findElement(By.cssSelector("#signin-continue-btn")).click();
-        driver.findElement(By.id("pass")).sendKeys("*****");
+        driver.findElement(By.id("pass")).sendKeys("Jeeshu007@");
         driver.findElement(By.cssSelector("#sgnBt")).click();
         String name = driver.findElement(By.xpath("//*[@id=\"gh\"]/nav/div[1]/span[1]/div/button/span/span")).getText();
         Assert.assertEquals(name,"Albab!");
@@ -48,7 +48,7 @@ public class AddToCart {
                 .perform();
         Thread.sleep(1000);
 
-        driver.findElement(By.xpath("//*[@id=\"item22314f408d\"]/div/div[2]/div[1]/a/div/span[1]")).click();
+        driver.findElement(By.xpath("//ul[contains(@class,'srp-results')]/li/div/div[2]/div/a")).click();
         Set<String> allWindows = driver.getWindowHandles();
 //        System.out.println(Arrays.toString(allWindows.toArray())); // to print window handles
         driver.switchTo().window(allWindows.toArray()[1].toString());
@@ -62,8 +62,7 @@ public class AddToCart {
     public void removeFromCartItem() throws InterruptedException {
 //        addToCartItem();
         Actions actions = new Actions(driver);
-        actions.moveToElement(driver.findElement(By.xpath("//*[@id=\"gh\"]/nav/div[2]/div[4]/div/a")))
-                .pause(Duration.ofSeconds(5))
+        actions.moveToElement(driver.findElement(By.xpath("//*[@id=\"gh\"]/nav/div[2]/div[4]/div/a/span/svg")))
                 .moveToElement(driver.findElement(By.xpath("//*[@id=\"gh-minicart-hover-body\"]/div[2]/div/div[2]/div/button")))
                 .click()
                 .build().perform();
