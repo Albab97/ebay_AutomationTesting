@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Fetching code from Git repository...'
+                git branch: 'master', 
+                    url: 'https://github.com/your-username/ebay_QA.git'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
+                bat 'mvn clean install' // Windows
+                // For Linux/Mac use: sh 'mvn clean install'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application...'
+                // Example: Copy JAR to deployment directory
+                //  bat 'copy target\\ebay_QA-1.0-SNAPSHOT.jar C:\\deployment\\'
+                // Or deploy to a server/container as needed
+            }
+        }
+    }
+    
+    post {
+        always {
+            echo 'Pipeline finished'
+        }
+        success {
+            echo 'Build successful!'
+        }
+        failure {
+            echo 'Build failed!'
+        }
+    }
+}
