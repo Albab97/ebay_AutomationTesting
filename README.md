@@ -3,7 +3,7 @@
 ### 🚀 Overview
 This project automates the testing of key functionalities of the **eBay website** using **Selenium WebDriver**, **Java**, and **TestNG**.  
 It demonstrates an end-to-end test automation framework that validates the core e-commerce workflows such as **Login**, **Sign Up**, **Dashboard**, and **Add to Cart**.
-
+This project follows a **structured QA approach** — complete with a detailed **Test Plan document** and **Test Cases Excel sheet** uploaded in this repository.
 ---
 
 ### 🧩 Features Covered
