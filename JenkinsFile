@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Fetching code from Git repository...'
                 git branch: 'master', 
-                    url: 'https://github.com/your-username/ebay_QA.git'
+                    url: 'https://github.com/Albab97/ebay_AutomationTesting.git'
             }
         }
         
